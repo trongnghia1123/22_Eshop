@@ -1,0 +1,27 @@
+{% extends "user/base.html" %}
+{% block title %}Vehicle List{% endblock title %}
+{% block content %}
+    <h1>Vehicle List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Price</th>
+                {% comment %} <th>Status</th> {% endcomment %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for vehicle in vehicles %}
+            <tr>
+                <td>{{ vehicle.title }}</td>
+                <td><img src="{{ vehicle.image.url }}" alt="{{ vehicle.title }}"></td>
+                <td>{{ vehicle.description }}</td>
+                <td>{{ vehicle.price }}</td>
+                <td>{{ vehicle.status_display }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

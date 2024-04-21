@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/themify-icons/themify-icons.css' %}" />
+    <link rel="shortcut icon" href="images/logo4.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
+  </head>
+
+  <body>
+    <div class="main-container">
+      <button id="scrollToTopBtn" onclick="scrollToTop()">
+        <svg style="transform: rotate(180deg)" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-up-circle" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 0a8 8 0 0 1 5.657 13.657l-4.096 4.096a1 1 0 0 1-1.414 0l-4.096-4.096A8 8 0 0 1 8 0zM7.5 4.5a.5.5 0 0 0-1 0v5.793L4.354 8.646a.5.5 0 0 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 1 0-.708-.708L8.5 10.293V4.5z" />
+        </svg>
+      </button>
+      <div class="header">
+        <div class="brand">
+          <img src="{% static 'images/final-logo.jpg' %}" alt="" />
+          <div class="slogan">
+            <p>
+              <span>Luxury</span> <span>Car</span> <span>,</span> <span>Luxury</span> <span>Life</span>
+              <span><i class="ti-crown"></i></span>
+            </p>
+          </div>
+        </div>
+
+        <div class="menu-responsive"></div>
+        <div class="menu">
+          <ul>
+            <li>
+              <a href="#">Trang Chủ</a>
+            </li>
+            <!-- Loại xe -->
+            <li>
+              <a href="#" id="loai-xe-menu">Loại xe <i class="ti-angle-down"></i></a>
+              <div class="sub-menu">
+                <ul>
+                  <li>
+                    <a href="#" class="loai-xe" data-loai="Xe 4 chỗ">Xe 4 chỗ</a>
+                  </li>
+                  <li>
+                    <a href="#" class="loai-xe" data-loai="Xe 7 chỗ">Xe 7 chỗ</a>
+                  </li>
+                  <li>
+                    <a href="#" class="loai-xe" data-loai="Xe Bán Tải">Xe Bán Tải</a>
+                  </li>
+                  <li>
+                    <a href="#" class="loai-xe" data-loai="Xe Điện">Xe Điện</a>
+                  </li>
+                  <li>
+                    <a href="#" class="loai-xe" data-loai="Đã qua sử dụng">Đã qua sử dụng</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <!-- Hãng xe -->
+            <li>
+              <a href="#" id="hang-xe-menu">Hãng xe <i class="ti-angle-down"></i></a>
+              <div style="left: 18vw" class="sub-menu">
+                <ul>
+                  <li>
+                    <a href="#" class="hang-xe" data-hang="mercedes">Mercedes</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hang-xe" data-hang="bmw">BMW</a>
+                  </li>
+                  <!-- Thêm các hãng xe khác -->
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#">
+                Mới cập nhật
+                <img style="width: 2rem; height: 2rem; float: right; padding-left: 0.25rem" src="{% static 'images/new.jpg.gif' %}" alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="#main-footer">Liên Hệ</a>
+            </li>
+            <li>
+              <a href="#">Đăng nhập</a>
+            </li>
+            <div id="search-bar" class="search-bar">
+              <i class="ti-search"></i>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div class="slider">
+        <div id="carouselId" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselId" data-slide-to="1"></li>
+            <li data-target="#carouselId" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+              <img style="width: 100%; height: 300px" src="{% static 'images/slides1.jpg' %}" alt="" />
+            </div>
+            <div class="carousel-item">
+              <img style="width: 100%; height: 300px" src="{% static 'images/slide3.jpg' %}" alt="" />
+            </div>
+            <div class="carousel-item">
+              <img style="width: 100%; height: 300px" src="{% static 'images/slide4.jpg' %}" alt="" />
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+    <div id="main-footer" class="footer">
+      <div class="row">
+        <div class="col-sm-4">
+          <h5 class="about">Liên Hệ</h5>
+          <p>Sitemap</p>
+          <p>Giới Thiệu</p>
+          <p>Liên Hệ</p>
+          <p>Dịch vụ sử dụng</p>
+          <p>Điều khoản sử dụng</p>
+          <p>Chính sách bảo mật</p>
+        </div>
+        <div class="col-sm-4">
+          <h5 class="about">Dịch Vụ</h5>
+          <p>Bảng giá xe</p>
+          <p>Ưu đãi đặt biệt</p>
+          <p>Đăng kí lái thử</p>
+          <p>Đại lí xe gần nhất</p>
+          <p>Linh kiện</p>
+          <p>Bảo trì bảo dưỡng</p>
+        </div>
+        <div class="col-sm-4">
+          <h5 class="about">NSCar Limited Company</h5>
+          <p>Website thử nghiệm đang trong quá trình hoàn thiện hồ sơ làm thủ tục cấp giấy phép MXH bộ TTTT và giấy phép TMDT với BCT.</p>
+          <p>Chịu trách nhiệm nội dung: Ngô Hữu Nghị</p>
+          <p>
+            Mail: <a href="">support@nscar.com.vn</a>
+          </p>
+          <p>
+            Địa chỉ: <a href="">416/15/100, Phường 5, Gò Vấp, Thành phố Hồ Chí Minh</a>
+          </p>
+          <p>© 2020 - Bản quyền thuộc về NSCar®</p>
+        </div>
+      </div>
+    </div>
+    {% comment %} SCRIPT {% endcomment %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Calling jQuery -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    <!-- Calling Slick Library -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="{% static 'js/vehicle_detail.js' %}"></script>
+  </body>
+</html>
