@@ -12,6 +12,7 @@
     </title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    {% comment %} <link rel="stylesheet" href="{% static 'css/payment.css' %}"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/themify-icons/themify-icons.css' %}" />
     <link rel="shortcut icon" href="images/logo4.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
@@ -46,7 +47,7 @@
         <div class="menu">
           <ul>
             <li>
-              <a href="#">Trang Chủ</a>
+              <a href="{% url 'home' %}">Trang Chủ</a>
             </li>
             <!-- Loại xe -->
             <li>
@@ -95,12 +96,15 @@
             <li>
               <a href="#main-footer">Liên Hệ</a>
             </li>
-            <li>
-              <a href="{% url 'login_page' %}">Đăng nhập</a>
-            </li>
-            <div id="search-bar" class="search-bar">
+            {% if user.is_authenticated %}
+                <li>Hello, {{ user.username }}</li>
+                <li><a href="{% url 'logout' %}">Đăng xuất</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Đăng nhập</a></li>
+            {% endif %}
+            {% comment %} <div id="search-bar" class="search-bar">
               <i class="ti-search"></i>
-            </div>
+            </div> {% endcomment %}
           </ul>
         </div>
       </div>
@@ -183,87 +187,7 @@
     <script src="{% static 'js/home.js' %}"></script>
     <script src="{% static 'js/vehicle_detail.js' %}"></script>
     <script src="{% static 'js/login.js' %}"></script>
+    {% comment %} <script src="{% static 'js/payment.js' %}"></script> {% endcomment %}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      document.getElementById('login-button').addEventListener('click', function () {
-        const email = document.getElementById('login-email').value;
-        const password = document.getElementById('login-password').value;
-    
-        // Kiểm tra xem email và password có được nhập hay không
-        if (!email || !password) {
-            alert('Vui lòng nhập email và mật khẩu');
-            return;
-        }
-    
-        // Gửi yêu cầu POST đến API endpoint để xác minh đăng nhập
-        fetch('/api/login/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email: email, password: password }),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Đăng nhập không thành công');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Xử lý phản hồi từ API endpoint (ví dụ: chuyển hướng hoặc hiển thị thông báo)
-            console.log(data);
-            alert('Đăng nhập thành công');
-            window.location.href = '/'; // Chuyển hướng về trang chính sau khi đăng nhập thành công
-        })
-        .catch(error => {
-            // Xử lý lỗi
-            console.error('Error:', error);
-            alert('Đăng nhập không thành công');
-        });
-    });
-    
-    document.getElementById('signup-button').addEventListener('click', function () {
-        const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
-    
-        // Kiểm tra xem username, email, password và confirm password có được nhập và khớp nhau hay không
-        if (!username || !email || !password || !confirmPassword) {
-            alert('Vui lòng nhập đầy đủ thông tin');
-            return;
-        }
-        if (password !== confirmPassword) {
-            alert('Mật khẩu xác nhận không khớp');
-            return;
-        }
-    
-        // Gửi yêu cầu POST đến API endpoint để đăng ký
-        fetch('api/signup/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username: username, email: email, password: password }),
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Đăng ký không thành công');
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Xử lý phản hồi từ API endpoint (ví dụ: hiển thị thông báo)
-            console.log(data);
-            alert('Đăng ký thành công');
-            window.location.href = '/login/'; // Chuyển hướng về trang đăng nhập sau khi đăng ký thành công
-        })
-        .catch(error => {
-            // Xử lý lỗi
-            console.error('Error:', error);
-            alert('Đăng ký không thành công');
-        });
-    });    
-    </script>
   </body>
 </html>

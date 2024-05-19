@@ -29,3 +29,4 @@ class VehicleDetail(models.Model):
 
     def __str__(self):
         return f"{self.vehicle_id.title} - {self.color}"
+    

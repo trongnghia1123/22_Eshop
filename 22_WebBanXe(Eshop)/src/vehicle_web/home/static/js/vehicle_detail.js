@@ -54,7 +54,6 @@ function redirectToDetail(vehicleId) {
 //         });
 // }
 
-
 function showFilteredProducts(products) {
     var html = '';
     if (products.length !== 0) {
@@ -63,7 +62,14 @@ function showFilteredProducts(products) {
                         <img src="${product.image}" alt="">
                         <p>${product.title}</p>
                         <h6>Giá chỉ từ: <span>${product.price}</span></h6>
-                        <button class="btn btn-product" onclick="redirectToDetail(${product.id})"><span>Chi tiết</span></button>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-product" onclick="redirectToDetail(${product.id})">
+                                <span>Chi tiết</span>
+                            </button>
+                            <button class="btn btn-product" onclick="addToCart(${product.id})">
+                                <i class="fas fa-shopping-cart"></i> Thêm vào giỏ hàng
+                            </button>
+                        </div>
                     </div>`;
         });
     } else {
@@ -71,6 +77,22 @@ function showFilteredProducts(products) {
     }
     document.getElementById('product-list').innerHTML = html;
 }
+// function showFilteredProducts(products) {
+//     var html = '';
+//     if (products.length !== 0) {
+//         products.forEach(product => {
+//             html += `<div class="col-md-4 col-sm-6 card">
+//                         <img src="${product.image}" alt="">
+//                         <p>${product.title}</p>
+//                         <h6>Giá chỉ từ: <span>${product.price}</span></h6>
+//                         <button class="btn btn-product" onclick="redirectToDetail(${product.id})"><span>Chi tiết</span></button>
+//                     </div>`;
+//         });
+//     } else {
+//         html += `<h1>Danh sách trống</h1>`;
+//     }
+//     document.getElementById('product-list').innerHTML = html;
+// }
 /* *****************************Hàm Load Product******************************** */
 function loadProducts() {
     fetch("/api/vehicles/")
@@ -89,3 +111,21 @@ function loadProducts() {
         });
 }
 loadProducts();
+
+/* *****************************Hàm Add Cart******************************** */
+function addToCart(productId) {
+    $.ajax({
+        type: 'POST',
+        url: `/api/cart/add/`,  // Assuming you have an API endpoint to add items to the cart
+        data: {
+            product_id: productId
+        },
+        success: function(response) {
+            alert('Product added to cart successfully!');
+        },
+        error: function(xhr, status, error) {
+            var errorMessage = xhr.responseJSON ? xhr.responseJSON.detail : 'An error occurred';
+            alert(errorMessage);
+        }
+    });
+}
