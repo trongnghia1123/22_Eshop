@@ -4,7 +4,6 @@ from django.db import models
 class Vehicle(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to='static/images/')
-    description = models.TextField()
     price = models.DecimalField(max_digits=15, decimal_places=2)
     status = models.BooleanField(default=False)
 
@@ -14,7 +13,8 @@ class Vehicle(models.Model):
 class VehicleDetail(models.Model):
     vehicle_id = models.OneToOneField(Vehicle, on_delete=models.CASCADE)
     color = models.CharField(max_length=255)
-    engineer_size = models.FloatField(default=0)
+    horsepower = models.IntegerField(default=0)
+    capacity = models.FloatField(default=0)
     cylinder = models.IntegerField(default=4)
     length = models.FloatField(default=0)
     width = models.FloatField(default=0)

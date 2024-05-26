@@ -1,53 +1,25 @@
-{% extends "home/base.html" %}
 {% block content %}
-<div id="login-form" class="login-form">
-    <!-- FORM SECTION -->
-    <div class="row">
-        <!-- SIGN IN -->
-        <div class="col align-items-center flex-col sign-in">
-            <div class="form-wrapper align-items-center">
-                <div class="form sign-in">
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            <i class="bx bxs-user"></i>
-                            <input type="text" placeholder="Username" name="username" class="form-control" />
-                        </div>
-                        <div class="input-group">
-                            <i class="bx bxs-lock-alt"></i>
-                            <input type="password" placeholder="Password" name="password" class="form-control"/>
-                        </div>
-                        <div class="login-message">{{ login_message }}</div>
-                        <button>Sign in</button>
-                    </form>
-                    <p>
-                        <b> Forgot password? </b>
-                    </p>
-                    <p>
-                        <span> Don't have an account? </span>
-                        {% comment %} <b onclick="toggle()" class="pointer"> Sign up here </b> {% endcomment %}
-                        <b><a href="{% url 'register' %}">Sign up here</a></b>
-                    </p>
-                </div>
-            </div>
-            <div class="form-wrapper"></div>
-        </div>
-        <!-- END SIGN IN -->
-    </div>
-    <!-- END FORM SECTION -->
-    <!-- CONTENT SECTION -->
-    <div class="row content-row">
-        <!-- SIGN IN CONTENT -->
-        <div class="col align-items-center flex-col">
-            <div class="text sign-in">
-                <h2>Welcome</h2>
-            </div>
-            <div class="img sign-in"></div>
-        </div>
-        <!-- END SIGN IN CONTENT -->
-    </div>
-    <!-- END CONTENT SECTION -->
-</div>
+	<div class="w3layoutscontaineragileits">
+	<h2>Login</h2>
+		<form action="" method="post">
+            {% csrf_token %}
+			<input type="text" placeholder="Username" name="username" class="form-control" />
+			<input type="password" placeholder="Password" name="password" class="form-control"/>
+			<ul class="agileinfotickwthree">
+				<li>
+					<input type="checkbox" id="brand1" value="">
+					<label for="brand1"><span></span>Remember me</label>
+					<a href="#">Forgot password?</a>
+				</li>
+			</ul>
+            <div class="login-message">{{ login_message }}</div>
+			<div class="aitssendbuttonw3ls">
+				<input type="submit" value="LOGIN">
+				<p> To register new account <span>→</span> <a class="w3_play_icon1" href="{% url 'register' %}"> Click Here</a></p>
+				<div class="clear"></div>
+			</div>
+		</form>
+	</div>
 <script>
     var form_field = document.getElementsByTagName('input')
     form_field[1].placeholder='Username...';

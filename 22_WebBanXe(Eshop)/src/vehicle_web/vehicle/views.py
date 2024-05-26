@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from rest_framework import generics
-from .models import Vehicle
+from .models import Vehicle, VehicleDetail
 from .serializers import VehicleSerializer
 from django.views.generic import DetailView
+from django.contrib import messages
 
 class VehicleListAPIView(generics.ListAPIView):
     queryset = Vehicle.objects.all()
@@ -14,4 +15,9 @@ class VehicleDetailView(DetailView):
 
 def vehicle_detail(request, vehicle_id):
     vehicle = get_object_or_404(Vehicle, pk=vehicle_id)
-    return render(request, 'vehicle/vehicle_detail.html', {'vehicle': vehicle})
+    try:
+        vehicle_detail = VehicleDetail.objects.get(vehicle_id=vehicle_id)
+    except VehicleDetail.DoesNotExist:
+        messages.warning(request, 'Sản phẩm chưa có thông tin chi tiết.')
+        return redirect('home')
+    return render(request, 'vehicle/vehicle_detail.html', {'vehicle': vehicle, 'vehicle_detail': vehicle_detail})

@@ -1,56 +1,44 @@
-{% extends "home/base.html" %}
+{% comment %} {% extends "home/base.html" %} {% endcomment %}
 {% block content %}
-<div id="login-form" class="login-form">
-    <!-- FORM SECTION -->
-    <div class="row">
-        <!-- SIGN UP -->
-        <div class="col align-items-center flex-col sign-up">
-            <div class="form-wrapper align-items-center">
-                <div class="form sign-up">
-                    <form action="" method="POST">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            <i class="bx bxs-user"></i>
-                            {{form.username}}
+<div id="small-dialog1" class="mfp-hide">
+    <div class="contact-form1">
+        <div class="contact-w3-agileits">
+            <h3>Register Form</h3>
+            <form action="" method="post">
+                {% csrf_token %}
+                    <div class="form-sub-w3ls">
+                        {{form.username}}
+                        <div class="icon-agile">
+                            <i class="fa fa-user" aria-hidden="true"></i>
                         </div>
-                        <div class="input-group">
-                            <i class="bx bx-mail-send"></i>
-                            {{form.email}}
+                    </div>
+                    <div class="form-sub-w3ls">
+                        {{form.email}}
+                        <div class="icon-agile">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
                         </div>
-                        <div class="input-group">
-                            <i class="bx bxs-lock-alt"></i>
-                            {{form.password1}}
+                    </div>
+                    <div class="form-sub-w3ls">
+                        {{form.password1}}
+                        <div class="icon-agile">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                         </div>
-                        <div class="input-group">
-                            <i class="bx bxs-lock-alt"></i>
-                            {{form.password2}}
+                    </div>
+                    <div class="form-sub-w3ls">
+                        {{form.password2}}
+                        <div class="icon-agile">
+                            <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                         </div>
-                        <button>Sign up</button>
-                    </form>
-
-                    <p>
-                        <span> Already have an account? </span>
-                        {% comment %} <b onclick="toggle()" class="pointer"> Sign in here </b> {% endcomment %}
-                        <b><a href="{% url 'login' %}">Sign in here</a></b>
-                    </p>
+                    </div>
+                <div class="login-check">
+                     <label class="checkbox"><input type="checkbox" name="checkbox" checked="">I Accept Terms & Conditions</label>
                 </div>
-            </div>
+                <div class="submit-w3l">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
         </div>
-        <!-- END SIGN UP -->
-    </div>
-    <!-- END FORM SECTION -->
-    <!-- CONTENT SECTION -->
-    <div class="row content-row">
-        <!-- SIGN UP CONTENT -->
-        <div class="col align-items-center flex-col">
-            <div class="img sign-up"></div>
-            <div class="text sign-up">
-                <h2>Join with us</h2>
-            </div>
-        </div>
-        <!-- END SIGN UP CONTENT -->
-    </div>
-    <!-- END CONTENT SECTION -->
+    </div>	
 </div>
 <script>
     var form_field = document.getElementsByTagName('input')
