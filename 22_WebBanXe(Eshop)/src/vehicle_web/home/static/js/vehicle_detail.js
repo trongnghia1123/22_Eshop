@@ -129,3 +129,20 @@ function addToCart(productId) {
         }
     });
 }
+
+function loadNewVehicles() {
+    fetch("/api/vehicles/")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(vehicles => {
+            showFilteredProducts(vehicles);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error, show message to the user if needed
+        });
+}

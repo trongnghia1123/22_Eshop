@@ -83,7 +83,7 @@
               </div>
             </li>
             <li>
-              <a href="#">
+              <a href="#"  id="load-new-vehicles" onclick="loadNewVehicles(); return false;">
                 Mới cập nhật
                 <img style="width: 2rem; height: 2rem; float: right; padding-left: 0.25rem" src="{% static 'images/new.jpg.gif' %}" alt="" />
               </a>
@@ -153,12 +153,9 @@
       <div class="row">
         <div class="col-sm-4">
           <h5 class="about">Liên Hệ</h5>
-          <p>Sitemap</p>
-          <p>Giới Thiệu</p>
-          <p>Liên Hệ</p>
-          <p>Dịch vụ sử dụng</p>
-          <p>Điều khoản sử dụng</p>
-          <p>Chính sách bảo mật</p>
+          <p>Số điện thoại: 0123 456 789</p>
+          <p>Email: webbanxe@email.com</p>
+          <p>Địa chỉ: 12 Nguyễn Văn Bảo, Phường 4, Quận Gò Vấp, TP Hồ Chí Minh</p>
         </div>
         <div class="col-sm-4">
           <h5 class="about">Dịch Vụ</h5>
@@ -208,6 +205,10 @@
             })
         }, 2000) // 5 giây
       })
+      document.getElementById('load-new-vehicles').addEventListener('click', function(event) {
+        event.preventDefault();
+        loadNewVehicles(); 
+      });
     </script>
   </body>
 </html>
