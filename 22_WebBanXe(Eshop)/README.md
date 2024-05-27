@@ -15,7 +15,7 @@ Hướng dẫn cài đặt và chạy sau khi pull project từ github về (Lư
 
 ## THÔNG TIN THÀNH VIÊN
 
-- Họ tên sv 1 - msv
+- Nguyễn Tiến Dũng - 21003901
 - Họ tên sv 2 - msv
 - Họ tên sv 3 - msv
 - Họ tên sv 4 - msv
